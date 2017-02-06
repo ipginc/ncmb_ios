@@ -77,12 +77,12 @@ static NCMBReachability *ncmbReachability = nil;
  シングルトンクラスのインスタンスを返す
  */
 +(NCMBReachability*)sharedInstance{
-    @synchronized(self){
-        if (!ncmbReachability){
-            ncmbReachability = [[NCMBReachability alloc] init];
-            [ncmbReachability reachabilityWithHostName:kHostName];
-        }
-    }
+    static dispatch_once_t once;
+    dispatch_once( &once, ^{
+        ncmbReachability = [[self alloc] init];
+        [ncmbReachability reachabilityWithHostName:kHostName];
+    });
+
     return ncmbReachability;
 }
 
@@ -119,7 +119,6 @@ static NCMBReachability *ncmbReachability = nil;
                                                              error: NULL];
         //ファイルが無い場合は監視を終了
         if ([contents count] == 0){
-            ncmbReachability = nil;
         } else {
             for (NSString *fileName in contents){
                 [self executeCommand:fileName];
