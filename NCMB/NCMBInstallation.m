@@ -94,11 +94,16 @@
         NSString *appVer = [dic objectForKey:@"appVersion"];
         NSString *newSdkVer = SDK_VERSION;
         NSString *newAppVer = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+
         //SDKバージョンとアプリバージョンの更新
-        if (![sdkVer isEqualToString:newSdkVer]){
-            [dic setObject:newSdkVer
-                                            forKey:@"sdkVersion"];
+        if (sdkVer != nil) {
+            if (![sdkVer isEqualToString:newSdkVer]){
+                [dic setObject:newSdkVer forKey:@"sdkVersion"];
+            }
+        } else {
+            [dic setObject:newSdkVer forKey:@"sdkVersion"];
         }
+
         if (![appVer isEqualToString:newAppVer]){
             [dic setObject:newAppVer forKey:@"appVersion"];
         }
