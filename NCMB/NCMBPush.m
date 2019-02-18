@@ -1,5 +1,5 @@
 /*
- Copyright 2014 NIFTY Corporation All Rights Reserved.
+ Copyright 2017-2018 FUJITSU CLOUD TECHNOLOGIES LIMITED All Rights Reserved.
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -143,7 +143,7 @@ static NCMBRichPushView *rv;
 }
 
 + (void) handleRichPush:(NSDictionary *)userInfo {
-    NSString *urlStr = [userInfo objectForKey:@"com.nifty.RichUrl"];
+    NSString *urlStr = [userInfo objectForKey:@"com.nifcloud.mbaas.RichUrl"];
     
     if ([urlStr isKindOfClass:[NSString class]]) {
         if (rv == nil){
