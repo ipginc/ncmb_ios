@@ -120,7 +120,7 @@ enum{
     self.uv.layer.cornerRadius = 5;
     self.uv.clipsToBounds = YES;
     
-    self.wv.navigationDelegate = self
+    self.wv.navigationDelegate = self;
     
     //add subview to main view
     [window.rootViewController.view addSubview:self.cv];
@@ -132,8 +132,8 @@ enum{
     }];
     
     NSURL *url = [NSURL URLWithString:richUrl];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5]
-    [self.wv loadRequest:req]
+    NSURLRequest *req = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5];
+    [self.wv loadRequest:req];
 }
 
 -(void)loadRequest:(NSURLRequest *)request{
